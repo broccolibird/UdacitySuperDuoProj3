@@ -45,14 +45,21 @@ public class WidgetProvider extends AppWidgetProvider {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
             if (cursor.moveToFirst()) {
-
                 views.setTextViewText(R.id.home_name, cursor.getString(scoresAdapter.COL_HOME));
                 views.setTextViewText(R.id.away_name, cursor.getString(scoresAdapter.COL_AWAY));
                 views.setTextViewText(R.id.score_textview, Utilies.getScores(cursor.getInt(scoresAdapter.COL_HOME_GOALS), cursor.getInt(scoresAdapter.COL_AWAY_GOALS)));
+                views.setTextViewText(R.id.data_textview, cursor.getString(scoresAdapter.COL_MATCHTIME));
                 views.setImageViewResource(R.id.home_crest, Utilies.getTeamCrestByTeamName(
                         cursor.getString(scoresAdapter.COL_HOME)));
                 views.setImageViewResource(R.id.away_crest, Utilies.getTeamCrestByTeamName(
                         cursor.getString(scoresAdapter.COL_AWAY)));
+            } else {
+                views.setTextViewText(R.id.home_name, "");
+                views.setTextViewText(R.id.away_name, "");
+                views.setTextViewText(R.id.score_textview, "");
+                views.setTextViewText(R.id.data_textview, "No game today");
+                views.setImageViewBitmap(R.id.home_crest, null);
+                views.setImageViewBitmap(R.id.away_crest, null);
             }
 
             appWidgetManager.updateAppWidget(appWidgetId, views);
