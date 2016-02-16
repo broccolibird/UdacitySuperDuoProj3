@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.Date;
+
 import barqsoft.footballscores.service.myFetchService;
 
 /**
@@ -22,6 +24,7 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
 {
     public scoresAdapter mAdapter;
     public static final int SCORES_LOADER = 0;
+    private Date date;
     private String[] fragmentdate = new String[1];
     private int last_selected_item = -1;
 
@@ -34,10 +37,16 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
         Intent service_start = new Intent(getActivity(), myFetchService.class);
         getActivity().startService(service_start);
     }
-    public void setFragmentDate(String date)
+    public void setFragmentDate(Date d, String date)
     {
+        this.date = d;
         fragmentdate[0] = date;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
