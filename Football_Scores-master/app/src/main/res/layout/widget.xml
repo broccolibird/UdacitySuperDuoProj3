@@ -10,11 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="5dp">
+        android:paddingTop="4dp">
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -31,12 +31,17 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/test_text"
-                android:textSize="@dimen/TeamNames"/>
+                android:textSize="@dimen/TeamNames"
+                android:textColor="@color/widget_text"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -48,7 +53,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/test_text"
-                android:textSize="@dimen/Score"/>
+                android:textSize="@dimen/Score"
+                android:textColor="@color/widget_text"/>
 
             <TextView
                 android:id="@+id/data_textview"
@@ -57,13 +63,14 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/test_text"/>
+                android:text="@string/test_text"
+                android:textColor="@color/widget_text"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -80,15 +87,14 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/test_text"
-                android:textSize="@dimen/TeamNames"/>
+                android:textSize="@dimen/TeamNames"
+                android:textColor="@color/widget_text"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"/>
         </LinearLayout>
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/details_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
 </LinearLayout>
 
 
