@@ -179,7 +179,8 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
 
     @Override
     public void onLoadFinished(android.support.v4.content.Loader<Cursor> loader, Cursor data) {
-        if (!data.moveToFirst()) {
+        if (data != null && !data.moveToFirst()) {
+            data.close();
             return;
         }
 
@@ -206,6 +207,8 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         String categories = data
                 .getString(data.getColumnIndex(AlexandriaContract.CategoryEntry.CATEGORY));
         ((TextView) rootView.findViewById(R.id.categories)).setText(categories);
+
+        data.close();
 
         rootView.findViewById(R.id.save_button).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.delete_button).setVisibility(View.VISIBLE);

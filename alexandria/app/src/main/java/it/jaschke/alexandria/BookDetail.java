@@ -94,7 +94,8 @@ public class BookDetail extends Fragment implements LoaderManager.LoaderCallback
 
     @Override
     public void onLoadFinished(android.support.v4.content.Loader<Cursor> loader, Cursor data) {
-        if (!data.moveToFirst()) {
+        if (data != null && !data.moveToFirst()) {
+            data.close();
             return;
         }
 
@@ -130,6 +131,8 @@ public class BookDetail extends Fragment implements LoaderManager.LoaderCallback
         String categories = data
                 .getString(data.getColumnIndex(AlexandriaContract.CategoryEntry.CATEGORY));
         ((TextView) rootView.findViewById(R.id.categories)).setText(categories);
+
+        data.close();
 
     }
 

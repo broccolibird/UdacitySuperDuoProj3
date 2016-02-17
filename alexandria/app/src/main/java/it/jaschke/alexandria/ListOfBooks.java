@@ -117,9 +117,24 @@ public class ListOfBooks extends Fragment implements LoaderManager.LoaderCallbac
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        bookListAdapter.swapCursor(data);
+        Cursor oldCursor = bookListAdapter.swapCursor(data);
+
+        if (oldCursor != null) {
+            oldCursor.close();
+        }
+
         if (position != ListView.INVALID_POSITION) {
             bookList.smoothScrollToPosition(position);
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        Cursor oldCursor = bookListAdapter.swapCursor(null);
+        if (oldCursor != null) {
+            oldCursor.close();
         }
     }
 
