@@ -14,7 +14,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import it.jaschke.alexandria.api.Callback;
@@ -32,7 +31,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
      */
     private CharSequence title;
     public static boolean IS_TABLET = false;
-    private BroadcastReceiver messageReciever;
+    private BroadcastReceiver messageReceiver;
 
     public static final String MESSAGE_EVENT = "MESSAGE_EVENT";
     public static final String MESSAGE_KEY = "MESSAGE_EXTRA";
@@ -47,9 +46,9 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             setContentView(R.layout.activity_main);
         }
 
-        messageReciever = new MessageReciever();
+        messageReceiver = new MessageReciever();
         IntentFilter filter = new IntentFilter(MESSAGE_EVENT);
-        LocalBroadcastManager.getInstance(this).registerReceiver(messageReciever,filter);
+        LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver,filter);
 
         navigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -128,7 +127,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
     @Override
     protected void onDestroy() {
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReciever);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
         super.onDestroy();
     }
 
