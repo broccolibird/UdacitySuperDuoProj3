@@ -21,8 +21,11 @@ public class BookListAdapter extends CursorAdapter {
 
 
     public static class ViewHolder {
+
         public final ImageView bookCover;
+
         public final TextView bookTitle;
+
         public final TextView bookSubTitle;
 
         public ViewHolder(View view) {
@@ -41,13 +44,16 @@ public class BookListAdapter extends CursorAdapter {
 
         ViewHolder viewHolder = (ViewHolder) view.getTag();
 
-        String imgUrl = cursor.getString(cursor.getColumnIndex(AlexandriaContract.BookEntry.IMAGE_URL));
+        String imgUrl = cursor
+                .getString(cursor.getColumnIndex(AlexandriaContract.BookEntry.IMAGE_URL));
         new DownloadImage(viewHolder.bookCover).execute(imgUrl);
 
-        String bookTitle = cursor.getString(cursor.getColumnIndex(AlexandriaContract.BookEntry.TITLE));
+        String bookTitle = cursor
+                .getString(cursor.getColumnIndex(AlexandriaContract.BookEntry.TITLE));
         viewHolder.bookTitle.setText(bookTitle);
 
-        String bookSubTitle = cursor.getString(cursor.getColumnIndex(AlexandriaContract.BookEntry.SUBTITLE));
+        String bookSubTitle = cursor
+                .getString(cursor.getColumnIndex(AlexandriaContract.BookEntry.SUBTITLE));
         viewHolder.bookSubTitle.setText(bookSubTitle);
     }
 

@@ -235,11 +235,11 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d(TAG, "onActivityResult: ");
-        switch(resultCode) {
+        switch (resultCode) {
             case Activity.RESULT_OK:
                 String contents = data.getStringExtra("SCAN_RESULT");
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
-                Log.d(TAG, "Got result: "+contents+", "+format);
+                Log.d(TAG, "Got result: " + contents + ", " + format);
                 ean.setText(contents);
                 break;
         }
